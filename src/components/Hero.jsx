@@ -75,7 +75,7 @@ export default function Hero({
                     marginBottom: '1rem',
                     opacity: 0.9,
                 }}>
-                    — Vail Valley &nbsp;·&nbsp; Louisiana Marsh —
+                    — Vail Valley &nbsp;·&nbsp; Roaring Fork Valley &nbsp;·&nbsp; Western Slope &nbsp;·&nbsp; Louisiana Marsh —
                 </p>
 
                 <h1 className="animate-fade-in" style={{

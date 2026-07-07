@@ -13,11 +13,13 @@ export default function HomePage() {
             <Hero
                 headline="World-Class Guided Fly Fishing"
                 headlineAccent="Colorado & Louisiana"
-                subtitle="Blue-ribbon trout rivers and legendary redfish flats — guided by Patrick Gerig."
+                subtitle="Gold-medal trout rivers of Colorado's Vail Valley, Roaring Fork Valley & Western Slope. Southern Louisiana's expansive coastal salt marshes, bays & flats. Guided by Captain Patrick Gerig."
                 ctaPrimary={{ label: 'Book Now', href: '#contact' }}
                 ctaSecondary={{ label: 'Explore Locations', href: '#locations' }}
+                imageSrc="/images/colorado/IMG_4644.JPG"
             />
             <BrandIntro />
+            <LocationCards />
             <FullWidthPhoto
                 src={coloradoFeature}
                 alt="Fly fishing Colorado's blue-ribbon trout rivers"
@@ -26,7 +28,6 @@ export default function HomePage() {
                 link="/colorado"
                 linkLabel="Explore Colorado Trips"
             />
-            <LocationCards />
             <FullWidthPhoto
                 src={louisianaFeature}
                 alt="Sight fishing for redfish in the Louisiana marsh"

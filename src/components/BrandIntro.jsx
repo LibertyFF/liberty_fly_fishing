@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Anchor, MapPin, Fish, Star } from 'lucide-react';
 import TopoBackground from './TopoBackground';
 
@@ -24,37 +23,32 @@ export default function BrandIntro() {
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
                 <div className="brand-intro-layout">
-                    {/* Photo — linked to Colorado to fix affordance (hover zooms but was non-clickable) */}
-                    <Link
-                        to="/colorado"
-                        style={{ display: 'block', textDecoration: 'none' }}
-                        aria-label="Explore Colorado guided trips"
+                    {/* About photo — static, no hover */}
+                    <div
+                        style={{
+                            position: 'relative',
+                            overflow: 'hidden',
+                            aspectRatio: '4 / 3',
+                            borderRadius: 'var(--radius-md)',
+                            boxShadow: '0 24px 64px rgba(26,46,69,0.22)',
+                        }}
                     >
-                        <div
-                            className="photo-frame"
-                            style={{
-                                aspectRatio: '4 / 3',
-                                borderRadius: 'var(--radius-md)',
-                                boxShadow: '0 24px 64px rgba(26,46,69,0.22)',
-                            }}
-                        >
-                            <img
-                                src="/images/favorites/co/fishing_on_boat.JPG"
-                                alt="Guided float trip with Patrick Gerig on a Colorado river"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                            />
-                            <div style={{
-                                position: 'absolute', bottom: 0, left: 0, right: 0,
-                                height: '4px', backgroundColor: 'var(--color-accent)',
-                            }} />
-                        </div>
-                    </Link>
+                        <img
+                            src="/images/colorado/image000000.jpg"
+                            alt="Captain Patrick Gerig on the water"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                        />
+                        <div style={{
+                            position: 'absolute', bottom: 0, left: 0, right: 0,
+                            height: '4px', backgroundColor: 'var(--color-accent)',
+                        }} />
+                    </div>
 
                     {/* Text */}
                     <div>
                         <span className="overline">About Liberty Fly Fishing</span>
                         <h2 style={{ color: 'var(--color-primary)', marginBottom: '1.25rem', textTransform: 'none', fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)' }}>
-                            A guide who puts you on fish — every time.
+                            Expert guided fly fishing in Colorado and Louisiana.
                         </h2>
                         <p style={{
                             fontSize: '1.05rem',
