@@ -1,0 +1,25 @@
+# Excludes files from the Vercel upload/deploy WITHOUT deleting them from the repo.
+# The originals stay in git as the client's archive.
+
+# HEIC originals — 220 MB, 127 files. No browser renders HEIC, and nothing in
+# src/ references them (every entry in src/data/galleryImages.js is JPG/JPEG/PNG).
+public/images/**/*.HEIC
+public/images/**/*.heic
+
+# Unreferenced icon PNGs (~360 KB) — no import or url() anywhere in src/.
+public/icons/
+
+# Unused hero screenshot
+public/screenshot_of_hero.png
+
+# Favorites images left unreferenced after the dead favoriteCO/favoriteLA exports
+# were removed. Kept in the repo as client originals; just not shipped.
+public/images/favorites/co/fishing_on_boat.JPG
+public/images/favorites/co/fishing_on_boat_2.JPG
+public/images/favorites/co/fish_close_up.jpg
+
+# Repo docs — no reason to serve these publicly
+UX_AUDIT.md
+LLMS_TEXT_AUDIT.md
+README.md
+scripts/

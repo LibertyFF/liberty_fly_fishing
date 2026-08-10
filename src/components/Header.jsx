@@ -20,7 +20,14 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => { setIsOpen(false); }, [location.pathname]);
+    // Close the mobile menu whenever the route changes — including logo clicks and
+    // browser back/forward. Adjusted during render rather than in an effect, which
+    // avoids the extra commit-then-rerender pass an effect would cause.
+    const [prevPath, setPrevPath] = useState(location.pathname);
+    if (prevPath !== location.pathname) {
+        setPrevPath(location.pathname);
+        setIsOpen(false);
+    }
 
     const isActive = (path) => location.pathname === path;
 

@@ -119,7 +119,11 @@ function CalendarPicker({ selected, onSelect }) {
 }
 
 export default function BookingCTA({ defaultLocation = '' }) {
-    const [location,     setLocation]     = useState('colorado');
+    // Pages pass a capitalised label ("Louisiana"); LOCATIONS ids are lowercase.
+    const requested = defaultLocation.toLowerCase();
+    const [location,     setLocation]     = useState(
+        LOCATIONS.some(l => l.id === requested) ? requested : 'colorado'
+    );
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTrip, setSelectedTrip] = useState(null);
     const [name,  setName]  = useState('');

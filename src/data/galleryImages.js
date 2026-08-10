@@ -1,19 +1,4 @@
-// ── Favorites ────────────────────────────────────────────────────────────────
-export const favoriteCO = [
-    { src: '/images/favorites/co/nature_on_river.JPG',     alt: 'Fly fishing Colorado rivers' },
-    { src: '/images/favorites/co/fishing_on_boat.JPG',     alt: 'Guided float trip on Colorado river' },
-    { src: '/images/favorites/co/fishing_on_boat_2.JPG',   alt: 'Fly fishing from drift boat' },
-    { src: '/images/favorites/co/fish_close_up.jpg',       alt: 'Trophy trout catch in Colorado' },
-    { src: '/images/favorites/co/boat_on_shore.JPG',       alt: 'Drift boat on Colorado river shore' },
-];
-
-export const favoriteLA = [
-    { src: '/images/favorites/louisiana/holding_big_fish.jpg',    alt: 'Trophy redfish in Louisiana marsh' },
-    { src: '/images/favorites/louisiana/holding_medium_fish.jpg', alt: 'Redfish catch in Louisiana' },
-];
-
-export const favorites = [...favoriteCO, ...favoriteLA];
-
+// ── Feature images ───────────────────────────────────────────────────────────
 export const coloradoFeature  = '/images/favorites/co/nature_on_river.JPG';
 export const louisianaFeature = '/images/favorites/louisiana/holding_big_fish.jpg';
 
@@ -81,8 +66,3 @@ export const allGallery = coloradoGallery.reduce((acc, coImg, i) => {
     if (louisianaGallery[i]) acc.push(louisianaGallery[i]);
     return acc;
 }, []);
-
-// Legacy aliases
-export const coloradoImages  = coloradoGallery;
-export const louisianaImages = louisianaGallery;
-export const homepageImages  = allGallery;
