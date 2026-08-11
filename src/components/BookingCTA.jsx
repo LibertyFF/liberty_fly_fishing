@@ -7,6 +7,12 @@ import TopoBackground from './TopoBackground';
 // to bring the date step back with no other changes needed.
 const SHOW_CALENDAR = false;
 
+// The whole right-hand booking card (location toggle, trip length, name/email,
+// submit, and the success state) is hidden per client request. All of it is left
+// in place below — flip this to true to bring the card back. With it hidden the
+// section becomes a contact panel: testimonial, trust points, phone, email, IG.
+const SHOW_BOOKING_FORM = false;
+
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DOW    = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 const TRIPS  = [
@@ -158,13 +164,15 @@ export default function BookingCTA({ defaultLocation = '' }) {
                         Ready to Get on the Water?
                     </h2>
                     <p style={{ color:'var(--color-text-muted)', fontSize:'1rem', maxWidth:'500px', margin:'0 auto' }}>
-                        {SHOW_CALENDAR
-                            ? 'Pick a date and Patrick will confirm availability within 24 hours.'
-                            : 'Send a request and Patrick will confirm availability within 24 hours.'}
+                        {!SHOW_BOOKING_FORM
+                            ? 'Call or email Patrick and he will confirm availability within 24 hours.'
+                            : SHOW_CALENDAR
+                                ? 'Pick a date and Patrick will confirm availability within 24 hours.'
+                                : 'Send a request and Patrick will confirm availability within 24 hours.'}
                     </p>
                 </div>
 
-                <div className="booking-grid">
+                <div className={SHOW_BOOKING_FORM ? 'booking-grid' : 'booking-grid booking-grid-single'}>
 
                     {/* ── Left trust panel ── */}
                     <div>
@@ -200,7 +208,8 @@ export default function BookingCTA({ defaultLocation = '' }) {
                         </div>
                     </div>
 
-                    {/* ── Right calendar card ── */}
+                    {/* ── Right booking card — hidden via SHOW_BOOKING_FORM, code retained ── */}
+                    {SHOW_BOOKING_FORM && (
                     <div style={{ backgroundColor:'#fff', borderRadius:'var(--radius-md)', padding:'1.75rem', boxShadow:'0 4px 24px rgba(26,46,69,0.09)', border:'1px solid rgba(26,46,69,0.07)' }}>
                         {submitted ? (
                             <div style={{ textAlign:'center', padding:'3rem 1rem' }}>
@@ -306,6 +315,7 @@ export default function BookingCTA({ defaultLocation = '' }) {
                             </form>
                         )}
                     </div>
+                    )}
 
                 </div>
             </div>

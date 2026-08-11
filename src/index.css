@@ -439,6 +439,13 @@ button {
   }
 }
 
+/* Applied when the booking form card is hidden — collapses the two-column grid
+   to a single centred column so the contact panel isn't stranded on the left. */
+.booking-grid-single {
+  grid-template-columns: minmax(0, 560px);
+  justify-content: center;
+}
+
 .form-row-half {
   display: grid;
   grid-template-columns: 1fr 1fr;
