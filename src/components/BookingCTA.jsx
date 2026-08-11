@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Zap, Calendar, Fish, CheckCircle, Phone, Mail, Camera } from 'lucide-react';
 import TopoBackground from './TopoBackground';
 
+// Calendar date-picker is hidden per client request. The CalendarPicker component
+// and all of its wiring below are intentionally left in place — flip this to true
+// to bring the date step back with no other changes needed.
+const SHOW_CALENDAR = false;
+
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DOW    = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 const TRIPS  = [
@@ -132,8 +137,11 @@ export default function BookingCTA({ defaultLocation = '' }) {
 
     const switchLocation = (id) => { setLocation(id); setSelectedDate(null); setSelectedTrip(null); };
 
-    const canSubmit = selectedDate && selectedTrip && name.trim() && email.trim();
-    const fmt = d => d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+    // With the calendar hidden there is no date to pick, so the date requirement is
+    // dropped from the gating chain — otherwise the form could never be submitted.
+    const dateReady = !SHOW_CALENDAR || Boolean(selectedDate);
+    const canSubmit = dateReady && selectedTrip && name.trim() && email.trim();
+    const fmt = d => (d ? d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' }) : '');
     const locationLabel = LOCATIONS.find(l => l.id === location)?.label;
 
     const handleSubmit = e => { e.preventDefault(); if (canSubmit) setSubmitted(true); };
@@ -150,7 +158,9 @@ export default function BookingCTA({ defaultLocation = '' }) {
                         Ready to Get on the Water?
                     </h2>
                     <p style={{ color:'var(--color-text-muted)', fontSize:'1rem', maxWidth:'500px', margin:'0 auto' }}>
-                        Pick a date and Patrick will confirm availability within 24 hours.
+                        {SHOW_CALENDAR
+                            ? 'Pick a date and Patrick will confirm availability within 24 hours.'
+                            : 'Send a request and Patrick will confirm availability within 24 hours.'}
                     </p>
                 </div>
 
@@ -197,7 +207,9 @@ export default function BookingCTA({ defaultLocation = '' }) {
                                 <div style={{ color:'var(--color-accent)', fontSize:'2.5rem', marginBottom:'0.75rem' }}>✓</div>
                                 <h3 style={{ color:'var(--color-primary)', fontSize:'1.2rem', marginBottom:'0.5rem', textTransform:'none' }}>Request sent!</h3>
                                 <p style={{ color:'var(--color-text-muted)', fontSize:'0.9rem', marginBottom:'0.25rem' }}>
-                                    {locationLabel} &nbsp;·&nbsp; {fmt(selectedDate)} &nbsp;·&nbsp; {TRIPS.find(t => t.id === selectedTrip)?.label}
+                                    {locationLabel}
+                                    {selectedDate && <> &nbsp;·&nbsp; {fmt(selectedDate)}</>}
+                                    &nbsp;·&nbsp; {TRIPS.find(t => t.id === selectedTrip)?.label}
                                 </p>
                                 <p style={{ color:'var(--color-text-muted)', fontSize:'0.9rem', lineHeight:1.6, marginBottom:'2rem' }}>
                                     Patrick will reach out to <strong style={{ color:'var(--color-primary)' }}>{email}</strong> within 24 hours.
@@ -236,15 +248,19 @@ export default function BookingCTA({ defaultLocation = '' }) {
                                     })}
                                 </div>
 
-                                <CalendarPicker
-                                    selected={selectedDate}
-                                    onSelect={d => { setSelectedDate(d); setSelectedTrip(null); }}
-                                />
+                                {SHOW_CALENDAR && (
+                                    <>
+                                        <CalendarPicker
+                                            selected={selectedDate}
+                                            onSelect={d => { setSelectedDate(d); setSelectedTrip(null); }}
+                                        />
 
-                                <div style={{ height:'1px', background:'rgba(26,46,69,0.08)' }} />
+                                        <div style={{ height:'1px', background:'rgba(26,46,69,0.08)' }} />
+                                    </>
+                                )}
 
                                 {/* Trip length */}
-                                <div style={{ opacity: selectedDate ? 1 : 0.38, pointerEvents: selectedDate ? 'auto' : 'none', transition:'opacity 0.2s' }}>
+                                <div style={{ opacity: dateReady ? 1 : 0.38, pointerEvents: dateReady ? 'auto' : 'none', transition:'opacity 0.2s' }}>
                                     <p style={{ fontFamily:'var(--font-heading)', fontWeight:700, fontSize:'0.63rem', letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--color-text-muted)', margin:'0 0 0.5rem' }}>
                                         {selectedDate ? `Trip length — ${fmt(selectedDate)}` : 'Trip Length'}
                                     </p>
@@ -270,7 +286,7 @@ export default function BookingCTA({ defaultLocation = '' }) {
                                 </div>
 
                                 {/* Name + Email */}
-                                <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', opacity: selectedDate && selectedTrip ? 1 : 0.38, pointerEvents: selectedDate && selectedTrip ? 'auto' : 'none', transition:'opacity 0.2s' }}>
+                                <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', opacity: dateReady && selectedTrip ? 1 : 0.38, pointerEvents: dateReady && selectedTrip ? 'auto' : 'none', transition:'opacity 0.2s' }}>
                                     <input type="text"  placeholder="Your name"      value={name}  onChange={e => setName(e.target.value)}  autoComplete="name"  style={input} />
                                     <input type="email" placeholder="Email address"  value={email} onChange={e => setEmail(e.target.value)} autoComplete="email" style={input} />
                                 </div>
@@ -282,7 +298,9 @@ export default function BookingCTA({ defaultLocation = '' }) {
                                     className="btn btn-primary"
                                     style={{ padding:'0.9rem', fontSize:'0.88rem', opacity: canSubmit ? 1 : 0.35, cursor: canSubmit ? 'pointer' : 'default', transition:'opacity 0.2s', textAlign:'center' }}
                                 >
-                                    {selectedDate ? `Request ${fmt(selectedDate)}` : 'Select a Date to Continue'}
+                                    {SHOW_CALENDAR
+                                        ? (selectedDate ? `Request ${fmt(selectedDate)}` : 'Select a Date to Continue')
+                                        : (selectedTrip ? 'Send Request' : 'Select a Trip Length to Continue')}
                                 </button>
 
                             </form>

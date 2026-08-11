@@ -17,7 +17,7 @@ export default function Hero({
     const overlayGradTop = `rgba(26,46,69,${(overlayOpacity * 0.48).toFixed(2)})`;
     const overlayGradBot = `rgba(26,46,69,${Math.min(1, overlayOpacity * 1.5).toFixed(2)})`;
 
-    const defaultSubtitle = "Blue-ribbon trout on Colorado's iconic rivers. World-class redfish in the Louisiana marsh. Guided by Patrick Gerig — USCG-certified, 57 five-star reviews.";
+    const defaultSubtitle = "Gold Medal trout on Colorado's iconic rivers. World-class redfish in the Louisiana marsh. Guided by Patrick Gerig — USCG-certified, 57 five-star reviews.";
 
     return (
         <section

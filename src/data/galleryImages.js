@@ -1,5 +1,5 @@
 // ── Feature images ───────────────────────────────────────────────────────────
-export const coloradoFeature  = '/images/favorites/co/nature_on_river.JPG';
+export const coloradoFeature  = '/images/colorado/IMG_4644.JPG';
 export const louisianaFeature = '/images/favorites/louisiana/holding_big_fish.jpg';
 
 // ── Gallery images ────────────────────────────────────────────────────────────

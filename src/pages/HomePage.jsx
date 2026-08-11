@@ -7,22 +7,55 @@ import BookingCTA from '../components/BookingCTA';
 import FullWidthPhoto from '../components/FullWidthPhoto';
 import { allGallery, coloradoFeature, louisianaFeature } from '../data/galleryImages';
 
+// Hero subtitle: each region gets its own block with an accent overline, matching
+// the overline treatment used elsewhere in the hero and on the booking panel.
+const regionBlock = {
+    display: 'block',
+    marginBottom: '0.85rem',
+};
+
+const regionLabel = {
+    display: 'block',
+    fontFamily: 'var(--font-heading)',
+    fontSize: '0.68rem',
+    fontWeight: 800,
+    letterSpacing: '0.2em',
+    textTransform: 'uppercase',
+    color: 'var(--color-accent)',
+    marginBottom: '0.15rem',
+};
+
 export default function HomePage() {
     return (
         <>
             <Hero
                 headline="World-Class Guided Fly Fishing"
                 headlineAccent="Colorado & Louisiana"
-                subtitle="Gold-medal trout rivers of Colorado's Vail Valley, Roaring Fork Valley & Western Slope. Southern Louisiana's expansive coastal salt marshes, bays & flats. Guided by Captain Patrick Gerig."
+                subtitle={
+                    <>
+                        <span style={regionBlock}>
+                            <span style={regionLabel}>Colorado</span>
+                            Gold Medal trout rivers of the Vail Valley, Roaring Fork Valley &amp; Western Slope.
+                        </span>
+                        <span style={regionBlock}>
+                            <span style={regionLabel}>Louisiana</span>
+                            Expansive coastal salt marshes, bays &amp; flats of the southern coast.
+                        </span>
+                        <span style={{ display: 'block', opacity: 0.82 }}>
+                            Guided by Captain Patrick Gerig.
+                        </span>
+                    </>
+                }
                 ctaPrimary={{ label: 'Book Now', href: '#contact' }}
                 ctaSecondary={{ label: 'Explore Locations', href: '#locations' }}
-                imageSrc="/images/colorado/IMG_4644.JPG"
+                imageSrc="/images/LFF_background.webp?v=1"
+                overlayOpacity={0.38}
             />
             <BrandIntro />
             <LocationCards />
             <FullWidthPhoto
                 src={coloradoFeature}
-                alt="Fly fishing Colorado's blue-ribbon trout rivers"
+                alt="Fly fishing Colorado's Gold Medal trout rivers"
                 label="Colorado"
                 sublabel="Vail Valley & Roaring Fork Valley"
                 link="/colorado"

@@ -5,7 +5,7 @@ const locations = [
     {
         name: 'Colorado',
         region: 'Vail Valley & Roaring Fork Valley',
-        tagline: "Blue-ribbon trout fishing on three of Western Colorado's most iconic rivers.",
+        tagline: "Gold Medal trout fishing on three of Western Colorado's most iconic rivers.",
         species: ['Brown Trout', 'Cutthroat', 'Rainbow Trout'],
         trips: ['Float trips & wade trips', 'Half day, ¾ day, full day'],
         from: '$550',
@@ -16,11 +16,11 @@ const locations = [
         name: 'Louisiana',
         region: 'Biloxi Marsh, Southeast Louisiana',
         tagline: 'World-class sight fishing for redfish in the heart of the Louisiana coastal marsh.',
-        species: ['Redfish', 'Black Drum', 'Sheepshead'],
+        species: ['Redfish', 'Black Drum', 'Sheepshead', 'Speckled Trout', 'Jack Crevalle'],
         trips: ['Half day, ¾ day, full day', 'Fly & conventional gear'],
         from: '$600',
         link: '/louisiana',
-        coverImage: '/images/favorites/louisiana/holding_medium_fish.jpg',
+        coverImage: '/images/louisiana/IMG_2244.jpeg',
     },
 ];
 

@@ -118,7 +118,7 @@ export default function LouisianaPage() {
                         {[
                             { label: 'Region', value: 'Southeast Louisiana' },
                             { label: 'Nearest City', value: 'New Orleans — ~45 min' },
-                            { label: 'Target Species', value: 'Redfish · Black Drum · Sheepshead' },
+                            { label: 'Target Species', value: 'Redfish · Black Drum · Sheepshead · Speckled Trout · Jack Crevalle' },
                             { label: 'Season', value: 'Year-round' },
                         ].map(({ label, value }) => (
                             <div key={label}>
