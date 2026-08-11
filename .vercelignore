@@ -3,14 +3,22 @@
 
 # HEIC originals — 220 MB, 127 files. No browser renders HEIC, and nothing in
 # src/ references them (every entry in src/data/galleryImages.js is JPG/JPEG/PNG).
-public/images/**/*.HEIC
-public/images/**/*.heic
+# Bare patterns (no leading path, no mid-pattern **) so they match at any depth —
+# the earlier `public/images/**/*.HEIC` form did not filter the upload.
+*.HEIC
+*.heic
 
 # Unreferenced icon PNGs (~360 KB) — no import or url() anywhere in src/.
 public/icons/
 
 # Unused hero screenshot
 public/screenshot_of_hero.png
+
+# Source PNG for the topo background. Superseded by the .webp (same 2657x1411,
+# 7.5 MB -> 530 KB at q70). Kept in the repo as the master; not shipped.
+# Regenerate with:
+#   node -e "require('sharp')('public/images/background_countour_lines.png').webp({quality:70}).toFile('public/images/background_countour_lines.webp')"
+public/images/background_countour_lines.png
 
 # Favorites images left unreferenced after the dead favoriteCO/favoriteLA exports
 # were removed. Kept in the repo as client originals; just not shipped.

@@ -9,7 +9,7 @@ export default function TopoBackground({
             style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundImage: 'url(/images/background_countour_lines.png?v=2)',
+                backgroundImage: 'url(/images/background_countour_lines.webp?v=3)',
                 backgroundRepeat: 'repeat',
                 backgroundPosition: position,
                 backgroundSize: 'auto',
