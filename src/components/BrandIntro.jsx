@@ -58,7 +58,7 @@ export default function BrandIntro() {
                         }}>
                             Liberty Fly Fishing is guided by Patrick Gerig — a USCG-certified guide
                             operating across two of the country's most unique fisheries: the
-                            Gold Medal trout rivers of Colorado's Vail and Roaring Fork valleys, and
+                            Gold Medal Trout Waters of Colorado's Vail and Roaring Fork valleys, and
                             the legendary redfish flats of Louisiana's Biloxi Marsh. Every trip is
                             built on preparation, adaptability, and a genuine commitment to putting
                             you on fish.

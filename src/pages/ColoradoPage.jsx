@@ -118,7 +118,7 @@ export default function ColoradoPage() {
             <Hero
                 headline="Fly Fishing Colorado's Finest Rivers"
                 headlineAccent="Vail Valley & Roaring Fork"
-                subtitle="Gold Medal trout on the Roaring Fork, Eagle, and Colorado Rivers — guided by Patrick Gerig."
+                subtitle="Gold Medal Trout Waters on the Roaring Fork, Eagle, and Colorado Rivers — guided by Patrick Gerig."
                 ctaPrimary={{ label: 'Plan My Colorado Trip', href: '#contact' }}
                 ctaSecondary={{ label: '(504) 909-0428', href: 'tel:+15049090428' }}
                 imageSrc="/images/favorites/co/nature_on_river.JPG"

@@ -5,7 +5,7 @@ const locations = [
     {
         name: 'Colorado',
         region: 'Vail Valley & Roaring Fork Valley',
-        tagline: "Gold Medal trout fishing on three of Western Colorado's most iconic rivers.",
+        tagline: "Gold Medal Trout Waters on three of Western Colorado's most iconic rivers.",
         species: ['Brown Trout', 'Cutthroat', 'Rainbow Trout'],
         trips: ['Float trips & wade trips', 'Half day, ¾ day, full day'],
         from: '$550',

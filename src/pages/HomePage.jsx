@@ -35,7 +35,7 @@ export default function HomePage() {
                     <>
                         <span style={regionBlock}>
                             <span style={regionLabel}>Colorado</span>
-                            Gold Medal trout rivers of the Vail Valley, Roaring Fork Valley &amp; Western Slope.
+                            Gold Medal Trout Waters of the Vail Valley, Roaring Fork Valley &amp; Western Slope.
                         </span>
                         <span style={regionBlock}>
                             <span style={regionLabel}>Louisiana</span>
@@ -55,7 +55,7 @@ export default function HomePage() {
             <LocationCards />
             <FullWidthPhoto
                 src={coloradoFeature}
-                alt="Fly fishing Colorado's Gold Medal trout rivers"
+                alt="Fly fishing Colorado's Gold Medal Trout Waters"
                 label="Colorado"
                 sublabel="Vail Valley & Roaring Fork Valley"
                 link="/colorado"
