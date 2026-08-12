@@ -1,38 +1,13 @@
-# Excludes files from the Vercel upload/deploy WITHOUT deleting them from the repo.
-# The originals stay in git as the client's archive.
+# Excludes files from CLI deploys. Note this does NOT apply to Git-based
+# deployments — Vercel clones the whole repo for those. Anything that must never
+# ship should simply not live under public/.
 
-# HEIC originals — 220 MB, 127 files. No browser renders HEIC, and nothing in
-# src/ references them (every entry in src/data/galleryImages.js is JPG/JPEG/PNG).
-# Bare patterns (no leading path, no mid-pattern **) so they match at any depth —
-# the earlier `public/images/**/*.HEIC` form did not filter the upload.
+# Guard: HEIC is unrenderable in browsers. The 127 originals were removed from
+# the repo (client holds the masters); this keeps stray ones from shipping.
 *.HEIC
 *.heic
 
-# Unreferenced icon PNGs (~360 KB) — no import or url() anywhere in src/.
-public/icons/
-
-# Unused hero screenshot
-public/screenshot_of_hero.png
-
-# Source PNG for the homepage hero. Superseded by LFF_background.webp (same
-# 1920x1080, 3.9 MB -> 521 KB at q82). Kept in the repo as the master.
-# Regenerate with:
-#   node -e "require('sharp')('public/images/LFF_background.png').removeAlpha().webp({quality:82}).toFile('public/images/LFF_background.webp')"
-LFF_background.png
-
-# Source PNG for the topo background. Superseded by the .webp (same 2657x1411,
-# 7.5 MB -> 530 KB at q70). Kept in the repo as the master; not shipped.
-# Regenerate with:
-#   node -e "require('sharp')('public/images/background_countour_lines.png').webp({quality:70}).toFile('public/images/background_countour_lines.webp')"
-public/images/background_countour_lines.png
-
-# Favorites images left unreferenced after the dead favoriteCO/favoriteLA exports
-# were removed. Kept in the repo as client originals; just not shipped.
-public/images/favorites/co/fishing_on_boat.JPG
-public/images/favorites/co/fishing_on_boat_2.JPG
-public/images/favorites/co/fish_close_up.jpg
-
-# Repo docs — no reason to serve these publicly
+# Repo docs and tooling — no reason to serve these publicly
 UX_AUDIT.md
 LLMS_TEXT_AUDIT.md
 README.md
